@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ComfortLearning — Find Your Favorite Course</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="brand"><i class="fa-solid fa-book-open"></i> Comfort<span>Learning</span></div>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="auth-area" id="authArea">
+      <button class="login-btn" id="loginBtn">Login</button>
+    </div>
+    <div class="cart-icon" id="cartToggle">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span class="cart-badge" id="cartCount">0</span>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-card">
+    <h1>Find Your Favorite Course Here!</h1>
+    <a class="shop-now" href="#courses">Shop Now</a>
+  </div>
+</section>
+
+<section class="courses-section" id="courses">
+  <h2 class="section-title">Courses We Offer!!</h2>
+  <p class="section-sub">Add courses to your cart to see a live total — checkout links open the real course on its official site.</p>
+
+  <div class="course-grid" id="courseGrid"></div>
+</section>
+
+<section class="pricing-section" id="pricing">
+  <h2 class="section-title">Simple, Honest Pricing</h2>
+  <p class="section-sub">Buy courses individually, or go unlimited with a membership.</p>
+
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-tag">Per Course</div>
+      <h3>Pay As You Go</h3>
+      <p class="price-amount">From $49<span>/course</span></p>
+      <ul class="price-features">
+        <li><i class="fa-solid fa-check"></i> Lifetime access to that course</li>
+        <li><i class="fa-solid fa-check"></i> Learn at your own pace</li>
+        <li><i class="fa-solid fa-check"></i> No subscription required</li>
+      </ul>
+      <a href="#courses" class="btn-block price-btn">Browse Courses</a>
+    </div>
+
+    <div class="price-card featured">
+      <div class="price-tag">Most Popular</div>
+      <h3>ComfortLearning Pro</h3>
+      <p class="price-amount">$19<span>/month</span></p>
+      <ul class="price-features">
+        <li><i class="fa-solid fa-check"></i> Unlimited access to every course</li>
+        <li><i class="fa-solid fa-check"></i> New courses added monthly</li>
+        <li><i class="fa-solid fa-check"></i> Priority support</li>
+        <li><i class="fa-solid fa-check"></i> Cancel anytime</li>
+      </ul>
+      <a href="#courses" class="btn-block price-btn primary">Get Started</a>
+    </div>
+
+    <div class="price-card">
+      <div class="price-tag">For Teams</div>
+      <h3>Team Plan</h3>
+      <p class="price-amount">$15<span>/seat/mo</span></p>
+      <ul class="price-features">
+        <li><i class="fa-solid fa-check"></i> Everything in Pro</li>
+        <li><i class="fa-solid fa-check"></i> Team progress dashboard</li>
+        <li><i class="fa-solid fa-check"></i> Centralized billing</li>
+      </ul>
+      <a href="#courses" class="btn-block price-btn">Contact Sales</a>
+    </div>
+  </div>
+</section>
+
+<section class="about-section" id="about">
+  <div class="about-inner">
+    <div class="about-text">
+      <h2 class="section-title" style="text-align:left;">About ComfortLearning</h2>
+      <p>ComfortLearning is a small, focused course marketplace: pick a topic, add it to your cart, and start learning — without a bloated interface getting in the way.</p>
+      <p>Every course links out to a real, official, free resource for that technology, since this is a learning project rather than a real storefront. Think of it as a curated starting point, not a walled garden.</p>
+    </div>
+    <div class="about-features">
+      <div class="about-feature">
+        <i class="fa-solid fa-bolt"></i>
+        <div>
+          <h4>Learn at your pace</h4>
+          <p>No deadlines, no drip-fed content — everything's available the moment you add it.</p>
+        </div>
+      </div>
+      <div class="about-feature">
+        <i class="fa-solid fa-link"></i>
+        <div>
+          <h4>Real resources</h4>
+          <p>Every course points to a genuine, official learning resource — not a locked-in paywall.</p>
+        </div>
+      </div>
+      <div class="about-feature">
+        <i class="fa-solid fa-code"></i>
+        <div>
+          <h4>Built in the open</h4>
+          <p>Node.js, Express, and MongoDB under the hood — a real full-stack app, not a mockup.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="overlay" id="overlay"></div>
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="cart-head">
+    <h2>Your Cart</h2>
+    <button class="close-cart" id="closeCart"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="cart-content" id="cartContent"></div>
+  <div class="total-sum" id="totalSum"></div>
+  <div class="cart-actions" id="cartActions"></div>
+</aside>
+
+<!-- Auth modal: Login / Register -->
+<div class="overlay" id="authOverlay"></div>
+<div class="auth-modal" id="authModal">
+  <button class="close-cart auth-close" id="authClose"><i class="fa-solid fa-xmark"></i></button>
+
+  <div class="auth-tabs">
+    <button class="auth-tab active" data-tab="login">Login</button>
+    <button class="auth-tab" data-tab="register">Register</button>
+  </div>
+
+  <form id="loginForm" class="auth-form">
+    <p class="auth-error" id="loginError"></p>
+    <label>Email
+      <input type="email" name="email" required autocomplete="email">
+    </label>
+    <label>Password
+      <input type="password" name="password" required autocomplete="current-password">
+    </label>
+    <button type="submit" class="btn-block proceed-btn">Login</button>
+  </form>
+
+  <form id="registerForm" class="auth-form hidden">
+    <p class="auth-error" id="registerError"></p>
+    <label>Name
+      <input type="text" name="name" required autocomplete="name">
+    </label>
+    <label>Email
+      <input type="email" name="email" required autocomplete="email">
+    </label>
+    <label>Password
+      <input type="password" name="password" required minlength="6" autocomplete="new-password">
+    </label>
+    <button type="submit" class="btn-block proceed-btn">Create Account</button>
+  </form>
+</div>
+
+<!-- Login history modal -->
+<div class="overlay" id="historyOverlay"></div>
+<div class="auth-modal" id="historyModal">
+  <button class="close-cart auth-close" id="historyClose"><i class="fa-solid fa-xmark"></i></button>
+  <h2 style="color:var(--navy); margin-bottom:16px;">Login History</h2>
+  <div id="historyList" class="history-list"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<footer>&copy; 2026 ComfortLearning. Built with Node.js, Express &amp; MongoDB.</footer>
+
+<script src="logos.js" defer></script>
+<script src="auth.js" defer></script>
+<script src="script.js" defer></script>
+</body>
+</html>
